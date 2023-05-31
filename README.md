@@ -5,5 +5,4 @@ The Code Academy Parcel Service. A system that emulates a real world supply chai
 
 ## UML
 
-![LAB 11](./assets/lab11.jpg);
-
+![LAB 11](./assets/lab11.jpg)
