@@ -2,17 +2,17 @@
 
 const eventPool = require('./eventEmitter');
 
-//first package
+// making system aware of vendor and driver
 require('./vendor/index');
+require('./driver/index');
 
-//handlers
-const { pickupHandler } = require('./driver');
-const { deliveryHandler } = require('./driver');
-const { deliveredHandler } = require('./driver');
-const { thankYouHandler } = require('./driver');
+// listeners: listen to all events and log expected content
+eventPool.on('pickup', (payload) => logger('pickup', payload));
+eventPool.on('in-transit', (payload) => logger('in-transit', payload));
+eventPool.on('delivered', (payload) => logger('delivered', payload));
 
-//listeners
-eventPool.on('NEW_ORDER', pickupHandler);
-eventPool.on('DELIVERY', deliveryHandler);
-eventPool.on('PACKAGE DELIVERED', deliveredHandler);
-eventPool.on('DELIVERED', thankYouHandler);
+// logs the event, a timestamp and the payload
+function logger(event, payload){
+  const timestamp = new Date();
+  console.log('EVENT: ', { event, timestamp, payload });
+}

@@ -1,22 +1,14 @@
 'use strict';
 
-let eventPool = require('../eventEmitter.js');
+const { orderHandler, deliveredMessage }= require('./handler');
+const eventPool = require('../eventEmitter');
 
-let Chance = require('chance');
-// Instantiate Chance so it can be used
-let chance = new Chance();
-
-// Generate a new order for pickup
+// starts the event cycle, note that the pickup emit is inside the orderHandler
 setInterval(() => {
-  const payload = {
-    store: chance.company(),
-    orderId: chance.guid(),
-    customer: chance.name(),
-    address: chance.address(),
-  };
-  eventPool.emit('NEW_ORDER', { payload });
+  orderHandler();
 }, 5000);
 
+eventPool.on('delivered', deliveredMessage);
 
 
 
