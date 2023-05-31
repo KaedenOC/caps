@@ -14,7 +14,7 @@ setInterval(() => {
     customer: chance.name(),
     address: chance.address(),
   };
-  eventPool.emit('NEW ORDER', { payload });
+  eventPool.emit('NEW_ORDER', { payload });
 }, 5000);
 
 
