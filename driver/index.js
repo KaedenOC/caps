@@ -1,6 +1,5 @@
 'use strict';
 
-'use strict';
 const eventPool = require('../eventEmitter');
 
 

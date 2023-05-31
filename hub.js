@@ -12,7 +12,7 @@ const { deliveredHandler } = require('./driver');
 const { thankYouHandler } = require('./driver');
 
 //listeners
-eventPool.on('NEW ORDER', pickupHandler);
+eventPool.on('NEW_ORDER', pickupHandler);
 eventPool.on('DELIVERY', deliveryHandler);
 eventPool.on('PACKAGE DELIVERED', deliveredHandler);
 eventPool.on('DELIVERED', thankYouHandler);
