@@ -10,14 +10,14 @@ let chance = new Chance();
 const orderHandler = (payload=null) => {
   if(!payload){
     payload = {
-      store: chance.company(),
+      store: '1-206-flowers',
       orderId: chance.guid(),
       customer: chance.name(),
       address: chance.address(),
     };
   }
   // console.log('VENDOR: ORDER ready for pickup:', payload);
-  socket.emit('pickup', payload);
+  socket.emit('pickup', payload); //emit will go to one place.
 };
 
 const thankDriver = (payload) => console.log('VENDOR: Thank you for your order', payload.customer);

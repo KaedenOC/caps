@@ -5,7 +5,7 @@ const { Server } = require('socket.io');
 const PORT = process.env.PORT || 3002;
 
 //socket server singleton
-const server = new Server();
+const server = new Server(); //currently only tcp
 
 //listening for all events
 server.listen(PORT);
@@ -34,20 +34,20 @@ capsNameSpace.on('connection', (socket) => {
   //   console.log('Payload in room', room);
   // });
 
-  //socket on for pickup, in transit, delivered
+  //socket on for pickup, in transit, delivered/ listens for and relays
   socket.on('pickup', (payload) => {
     logger('pickup', payload);
-    capsNameSpace.emit('pickup', payload);
+    socket.broadcast.emit('pickup', payload); // sends to all clients except the sender..
   });
 
   socket.on('in-transit', (payload) => {
     logger('in-transit', payload);
-    capsNameSpace.emit('in-transit', payload);
+    socket.broadcast.emit('in-transit', payload);
   });
 
   socket.on('delivered', (payload) => {
     logger('delivered', payload);
-    capsNameSpace.emit('delivered', payload);
+    socket.broadcast.emit('delivered', payload);
   });
 
 });
