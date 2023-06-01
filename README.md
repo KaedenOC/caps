@@ -8,7 +8,9 @@ In this phase, we’ll be moving away from using Node Events for managing a pool
 
 ## Collaborations
 
-Referenced and followed along during Code Review with instructor Ryan Gallaway. UML for lab 12 help from Reece.
+Referenced and followed along during Code Review with instructor Ryan Gallaway.
+
+- **Lab 12** - UML for lab 12 help from Reece. Sat at a table with Reece, Ike, and had assistance from Stephen, Kaleen, and Ryan.
 
 ## UML
 
