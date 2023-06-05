@@ -39,6 +39,7 @@ describe('Vendor handlers', () => {
 
   test('Should log correct emit and console log for thankDriver', () => {
     let payload = {
+      
       customer: 'Test Test',
     };
 
