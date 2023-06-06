@@ -30,10 +30,9 @@ capsNameSpace.on('connection', (socket) => {
   console.log('socket connected to namespace', socket.id);
 
   // join room
-  socket.on('JOIN', (room) => {
+  socket.on('join', (room) => {
     socket.join(room);
-    console.log(`joined the ${room} room`);
-    console.log('Payload in room', room);
+    console.log(`${socket.id} joined the ${room} room.`);
   });
 
   socket.onAny((event, payload) => {
@@ -68,7 +67,6 @@ capsNameSpace.on('connection', (socket) => {
 
   socket.on('delivered', (payload) => {
     // logger('delivered', payload);
-    socket.broadcast.emit('delivered', payload);
     let vendorQueue = capsQueue.read(payload.queueId);
     if(!vendorQueue){
       let queueKey = capsQueue.store(payload.queueId, new Queue());
